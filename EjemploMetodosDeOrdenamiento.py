@@ -61,7 +61,7 @@ class MetodosDeOrdenamiento:
                     datos[j]=datos[j+1]
                     datos[j+1]=aux
             contadorRecorridos+=1
-        #tiempoTotal=System.nanoTime()-tiempoInicial;
+        #tiempoTotal=System.nanoTime()-tiempoInicial
         self.mostrarVector(datos)
         print()
         print()
@@ -76,7 +76,7 @@ class MetodosDeOrdenamiento:
         i=1
         ordenado=False
         aux=0
-        #tiempoInicial=System.nanoTime();
+        #tiempoInicial=System.nanoTime()
         while(i<len(datos) and not ordenado):
             i+=1
             ordenado=True
@@ -89,13 +89,39 @@ class MetodosDeOrdenamiento:
                     datos[j]=datos[j+1]
                     datos[j+1]=aux
             contadorRecorridos+=1
+        #tiempoTotal=System.nanoTime()-tiempoInicial
+        self.mostrarVector(datos)
+        print()
+        print()
+        self.mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal)
+    
+    def ordenmientoPorSeleccion(self, datos):
+        contadorComparaciones=0
+        contadorIntercambios=0
+        contadorRecorridos=0
+        tiempoTotal=0
+        tiempoInicial=0
+        #tiempoInicial=System.nanoTime()
+        for i in range(0, (len(datos)+1)):
+            menor=i
+            for j in range(i+1, (len(datos)+1)):
+                contadorComparaciones+=1
+                if(datos[j]<datos[menor]):
+                    menor=j
+            aux=datos[i]
+            datos[i]=datos[menor]
+            datos[menor]=aux
+            contadorIntercambios+=1
+            contadorRecorridos+=1
+            contadorIntercambios+=1
         #tiempoTotal=System.nanoTime()-tiempoInicial;
         self.mostrarVector(datos)
         print()
         print()
         self.mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal)
     
-
+    
+    
 edades=[34, 25, 12, 87, 9, 10, 34, 37, 24, 2]
 
 metodos=MetodosDeOrdenamiento()
