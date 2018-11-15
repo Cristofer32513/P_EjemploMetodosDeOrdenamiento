@@ -40,5 +40,25 @@ class MetodosDeOrdenamiento:
         print()
         self.__mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal);
     
+    def ordenamientoBurbuja1(self, datos):
+        contadorComparaciones=0, contadorIntercambios=0, contadorRecorridos=0
+        tiempoTotal=0, tiempoInicial=0
+        
+        aux=0;
+        #tiempoInicial=System.nanoTime()
+        for i in range(2, len(datos)):
+            for j in range(0, len(datos)-i):
+                contadorComparaciones+=1
+                if(datos[j]>datos[j+1]):
+                    contadorIntercambios+=1
+                    aux=datos[j]
+                    datos[j]=datos[j+1]
+                    datos[j+1]=aux
+            contadorRecorridos+=1
+        #tiempoTotal=System.nanoTime()-tiempoInicial;
+        self.__mostrarVector(datos)
+        print()
+        print()
+        self.__mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal)
         
     
