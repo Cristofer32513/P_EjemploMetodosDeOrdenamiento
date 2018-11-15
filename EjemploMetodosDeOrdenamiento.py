@@ -146,6 +146,35 @@ class MetodosDeOrdenamiento:
         print()
         self.mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal)
     
+    def ordenamientoPorInsercion2(self, datos):
+        contadorComparaciones=0
+        contadorIntercambios=0
+        contadorRecorridos=0
+        tiempoTotal=0
+        tiempoInicial=0
+        i=0
+        j=0
+        aux=0
+        
+        #tiempoInicial=System.nanoTime();
+        for i in range(1, len(datos)):
+            aux=datos[i]
+            j=i-1
+            contadorComparaciones+=1
+            while(j>=0 and aux<datos[j]):
+                contadorIntercambios+=1
+                datos[j+1]=datos[j]
+                j-=1
+            datos[j+1]=aux
+            contadorRecorridos+=1
+        #tiempoTotal=System.nanoTime()-tiempoInicial
+        self.mostrarVector(datos)
+        print()
+        print()
+        self.mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal)
+
+    
+    
 edades=[34, 25, 12, 87, 9, 10, 34, 37, 24, 2]
 
 metodos=MetodosDeOrdenamiento()
@@ -154,7 +183,7 @@ print("=================VECTOR ORIGINAL======================")
 metodos.mostrarVector(edades)
 print()
 print()
-print("===============ORDENAMIENTO BURBUJA===================")
+print("===============ORDENAMIENTO POR BURBUJA===================")
 metodos.ordenamientoBurbuja0(edades)
 
 edades=[34, 25, 12, 87, 9, 10, 34, 37, 24, 2]
@@ -168,6 +197,15 @@ edades=[34, 25, 12, 87, 9, 10, 34, 37, 24, 2]
 print();
 print();
 
-print("===============ORDENAMIENTO SELECCION====================")
+print("===============ORDENAMIENTO POR SELECCION====================")
 edades=[34, 25, 12, 87, 9, 10, 34, 37, 24, 2]
 metodos.ordenamientoPorSeleccion(edades)
+print();
+print();
+
+print("===============ORDENAMIENTO POR INSERCION====================")
+edades=[34, 25, 12, 87, 9, 10, 34, 37, 24, 2]
+metodos.ordenamientoPorInsercion(edades)
+
+edades=[34, 25, 12, 87, 9, 10, 34, 37, 24, 2]
+metodos.ordenamientoPorInsercion2(edades)
