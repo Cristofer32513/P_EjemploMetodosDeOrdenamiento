@@ -102,9 +102,9 @@ class MetodosDeOrdenamiento:
         tiempoTotal=0
         tiempoInicial=0
         #tiempoInicial=System.nanoTime()
-        for i in range(0, (len(datos)+1)):
+        for i in range(0, len(datos)):
             menor=i
-            for j in range(i+1, (len(datos)+1)):
+            for j in range(i+1, len(datos)):
                 contadorComparaciones+=1
                 if(datos[j]<datos[menor]):
                     menor=j
@@ -141,3 +141,9 @@ metodos.ordenamientoBurbuja2(edades)
 
 edades=[34, 25, 12, 87, 9, 10, 34, 37, 24, 2]
 #metodos.ordenamientoBurbuja3(edades)
+print();
+print();
+
+print("===============ORDENAMIENTO SELECCION====================")
+edades=[34, 25, 12, 87, 9, 10, 34, 37, 24, 2]
+metodos.ordenmientoPorSeleccion(edades)
