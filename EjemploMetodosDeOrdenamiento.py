@@ -3,6 +3,7 @@ Created on 14/11/2018
 
 @author: casas
 '''
+import timeit
 class MetodosDeOrdenamiento:
        
     def mostrarVector(self, datos):
@@ -15,17 +16,13 @@ class MetodosDeOrdenamiento:
         print("    - Cantidad de recorridos realizados: "+str(contadorRecorridos))
         print("    - Cantidad de comparaciones realizadas: "+str(contadorComparaciones))
         print("    - Cantidad de intercambios realizados: "+str(contadorIntercambios))
-        print("    - Tiempo total de ejecucion: "+str(float(tiempoTotal)/1000000)+" milisegundos")
+        print("    - Tiempo total de ejecucion: "+str(tiempoTotal)+" segundos")
     
     def ordenamientoBurbuja0(self, datos):
         contadorComparaciones=0
         contadorIntercambios=0
-        contadorRecorridos=0
-        tiempoTotal=0
-        tiempoInicial=0
-        
+        contadorRecorridos=0        
         aux=0
-        #tiempoInicial=System.nanoTime()
         for i in range(0, len(datos)):
             for j in range(i+1, len(datos)):
                 contadorComparaciones+=1
@@ -37,7 +34,7 @@ class MetodosDeOrdenamiento:
                 
             
             contadorRecorridos+=1
-        #tiempoTotal=System.nanoTime()-tiempoInicial
+        tiempoTotal=timeit.timeit()
         self.mostrarVector(datos)
         print()
         print()
@@ -47,11 +44,8 @@ class MetodosDeOrdenamiento:
         contadorComparaciones=0
         contadorIntercambios=0
         contadorRecorridos=0
-        tiempoTotal=0
-        tiempoInicial=0
         
         aux=0;
-        #tiempoInicial=System.nanoTime()
         for i in range(2, (len(datos)+1)):
             for j in range(0, (len(datos)+1)-i):
                 contadorComparaciones+=1
@@ -61,7 +55,7 @@ class MetodosDeOrdenamiento:
                     datos[j]=datos[j+1]
                     datos[j+1]=aux
             contadorRecorridos+=1
-        #tiempoTotal=System.nanoTime()-tiempoInicial
+        tiempoTotal=timeit.timeit()
         self.mostrarVector(datos)
         print()
         print()
@@ -71,12 +65,10 @@ class MetodosDeOrdenamiento:
         contadorComparaciones=0
         contadorIntercambios=0
         contadorRecorridos=0
-        tiempoTotal=0
-        tiempoInicial=0
+        
         i=1
         ordenado=False
         aux=0
-        #tiempoInicial=System.nanoTime()
         while(i<len(datos) and not ordenado):
             i+=1
             ordenado=True
@@ -89,7 +81,7 @@ class MetodosDeOrdenamiento:
                     datos[j]=datos[j+1]
                     datos[j+1]=aux
             contadorRecorridos+=1
-        #tiempoTotal=System.nanoTime()-tiempoInicial
+        tiempoTotal=timeit.timeit()
         self.mostrarVector(datos)
         print()
         print()
@@ -99,9 +91,7 @@ class MetodosDeOrdenamiento:
         contadorComparaciones=0
         contadorIntercambios=0
         contadorRecorridos=0
-        tiempoTotal=0
-        tiempoInicial=0
-        #tiempoInicial=System.nanoTime()
+        
         for i in range(0, len(datos)):
             menor=i
             for j in range(i+1, len(datos)):
@@ -114,7 +104,7 @@ class MetodosDeOrdenamiento:
             contadorIntercambios+=1
             contadorRecorridos+=1
             contadorIntercambios+=1
-        #tiempoTotal=System.nanoTime()-tiempoInicial;
+        tiempoTotal=timeit.timeit()
         self.mostrarVector(datos)
         print()
         print()
@@ -124,9 +114,7 @@ class MetodosDeOrdenamiento:
         contadorComparaciones=0
         contadorIntercambios=0
         contadorRecorridos=0
-        tiempoTotal=0
-        tiempoInicial=0
-        #tiempoInicial=System.nanoTime()
+        
         for i in range(1, len(datos)):
             valor=datos[i]
             j=i-1
@@ -140,7 +128,7 @@ class MetodosDeOrdenamiento:
                 else:
                     break
             contadorRecorridos+=1
-        #tiempoTotal=System.nanoTime()-tiempoInicial;
+        tiempoTotal=timeit.timeit();
         self.mostrarVector(datos)
         print()
         print()
@@ -150,13 +138,11 @@ class MetodosDeOrdenamiento:
         contadorComparaciones=0
         contadorIntercambios=0
         contadorRecorridos=0
-        tiempoTotal=0
-        tiempoInicial=0
+        
         i=0
         j=0
         aux=0
         
-        #tiempoInicial=System.nanoTime();
         for i in range(1, len(datos)):
             aux=datos[i]
             j=i-1
@@ -167,7 +153,7 @@ class MetodosDeOrdenamiento:
                 j-=1
             datos[j+1]=aux
             contadorRecorridos+=1
-        #tiempoTotal=System.nanoTime()-tiempoInicial
+        tiempoTotal=timeit.timeit()
         self.mostrarVector(datos)
         print()
         print()
