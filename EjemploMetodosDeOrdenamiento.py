@@ -7,7 +7,14 @@ import timeit
 class MetodosDeOrdenamiento:
        
     def mostrarVector(self, datos):
-        print(datos)
+        cont=1;
+        for i in range(0, len(datos)):
+            if(cont==15):
+                print("  "+datos[i]+",    ")
+                cont=0
+            else:
+                print("  "+datos[i]+",    ")
+                cont+=1;
     
     def mostrarDatosDeEficiencia(self, contadorComparaciones, contadorIntercambios,
                                  contadorRecorridos, tiempoTotal):
