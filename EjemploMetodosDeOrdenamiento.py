@@ -3,7 +3,8 @@ Created on 14/11/2018
 
 @author: casas
 '''
-import timeit, random
+import timeit
+import random
 from pip._vendor.distlib.compat import raw_input
 class MetodosDeOrdenamiento:
        
@@ -174,7 +175,7 @@ metodos=MetodosDeOrdenamiento()
         
 repetirMenuPrincipal=True
 opcion=0
-datos=int[0]
+datos=[]
 
 while(repetirMenuPrincipal):
     print("1 = Metodo de ordenamiento burbuja.")
@@ -187,8 +188,8 @@ while(repetirMenuPrincipal):
     print()
     print()
     
-    if(opcion>=1 and opcion <=5):
-        if(opcion==1):
+    if(int(opcion)>=1 and int(opcion) <=5):
+        if(int(opcion)==1):
             if(len(datos)>0):
                 repetirMenuMetodoburbuja=True
                 opcionBurbuja=0     
@@ -211,28 +212,24 @@ while(repetirMenuPrincipal):
                             print("\n\n")
                             print("  ===================================================ORDENAMIENTO BURBUJA 0==================================================\n")
                             metodos.ordenamientoBurbuja0(datos.clone())
-                            break
                         if(opcionBurbuja==2):
                             print("  ======================================================VECTOR ORIGINAL======================================================\n")
                             metodos.mostrarVector(datos)
                             print("\n\n")
                             print("  ===================================================ORDENAMIENTO BURBUJA 1==================================================\n")
                             metodos.ordenamientoBurbuja1(datos.clone())
-                            break
                         if(opcionBurbuja==3):
                             print("  ======================================================VECTOR ORIGINAL======================================================\n")
                             metodos.mostrarVector(datos)
                             print("\n\n")
                             print("  ===================================================ORDENAMIENTO BURBUJA 2==================================================\n")
                             metodos.ordenamientoBurbuja2(datos.clone())
-                            break
                         if(opcionBurbuja==4):
                             print("  ======================================================VECTOR ORIGINAL======================================================\n")
                             metodos.mostrarVector(datos)
                             print("\n\n")
                             print("  ===================================================ORDENAMIENTO BURBUJA 3==================================================\n")
                             metodos.ordenamientoBurbuja3(datos.clone())
-                            break
                         repetirMenuMetodoburbuja=False
                     else:
                         print("    *"+opcionBurbuja+" no es una opcion valida, intenta otra vez.")
@@ -242,8 +239,7 @@ while(repetirMenuPrincipal):
                 print("  *No se ha elegido un tamanio para el vector.")
             print()
             print()
-            break
-        if(opcion==2):
+        if(int(opcion)==2):
             if(len(datos)>0):
                 print("  ======================================================VECTOR ORIGINAL======================================================\n")
                 metodos.mostrarVector(datos)
@@ -254,8 +250,7 @@ while(repetirMenuPrincipal):
                 print("  *No se ha elegido un tamanio para el vector.")
             print()
             print()
-            break
-        if(opcion==3):
+        if(int(opcion)==3):
             if(len(datos)>0):
                 print("  ======================================================VECTOR ORIGINAL======================================================\n")
                 metodos.mostrarVector(datos)
@@ -266,8 +261,7 @@ while(repetirMenuPrincipal):
                 print("  *No se ha elegido un tamanio para el vector.")
             print()
             print()
-            break
-        if(opcion==4):
+        if(int(opcion)==4):
             repetirMenuTamanioVector=True
             opcionVector=0
             
@@ -284,29 +278,25 @@ while(repetirMenuPrincipal):
             
                 if(opcionVector>=1 and opcionVector <=4):                
                     if(opcion==1):
-                        datos=int[1000]
+                        datos=[]
                         print("  Creando vector...")
                         for i in range(0,len(datos)):
-                            datos[i]=random.randint(1,101)
-                        break
+                            datos.insert(i, random.randint(1,101))
                     if(opcion==2):
-                        datos=int[10000]
+                        datos=[]
                         print("  Creando vector...")
                         for i in range(0,len(datos)):
-                            datos[i]=random.randint(1,101)
-                        break
+                            datos.insert(i, random.randint(1,101))
                     if(opcion==3):
-                        datos=int[100000];
+                        datos=[];
                         print("  Creando vector...")
                         for i in range(0,len(datos)):
-                            datos[i]=random.randint(1,101)
-                        break
+                            datos.insert(i, random.randint(1,101))
                     if(opcion==4):
-                        datos=int[1000000];
+                        datos=[];
                         print("  Creando vector...");
                         for i in range(0,len(datos)):
-                            datos[i]=random.randint(1,101)
-                        break
+                            datos.insert(i, random.randint(1,101))
                     repetirMenuTamanioVector=False
                     print()
                     print("  El vector ha sido creado y llenado.")
@@ -316,10 +306,8 @@ while(repetirMenuPrincipal):
                     print("    *"+opcion+" no es una opcion valida, intenta otra vez.")
                 print()
                 print()
-            break
-        if(opcion==4):
+        if(int(opcion)==5):
             repetirMenuPrincipal=False
-            break
         print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
         print()
         print()
