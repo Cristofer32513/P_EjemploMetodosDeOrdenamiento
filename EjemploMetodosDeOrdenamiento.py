@@ -3,7 +3,8 @@ Created on 14/11/2018
 
 @author: casas
 '''
-import timeit
+import timeit, random
+from pip._vendor.distlib.compat import raw_input
 class MetodosDeOrdenamiento:
        
     def mostrarVector(self, datos):
@@ -168,38 +169,162 @@ class MetodosDeOrdenamiento:
         self.mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal)
 
     
-    
-edades=[34, 25, 12, 87, 9, 10, 34, 37, 24, 2]
-
 metodos=MetodosDeOrdenamiento()
+                
+        
+repetirMenuPrincipal=True
+opcion=0
+datos=int[0]
 
-print("=================VECTOR ORIGINAL======================")
-metodos.mostrarVector(edades)
-print()
-print()
-print("===============ORDENAMIENTO POR BURBUJA===================")
-metodos.ordenamientoBurbuja0(edades)
-
-edades=[34, 25, 12, 87, 9, 10, 34, 37, 24, 2]
-metodos.ordenamientoBurbuja1(edades)
-
-edades=[34, 25, 12, 87, 9, 10, 34, 37, 24, 2]
-metodos.ordenamientoBurbuja2(edades)
-
-edades=[34, 25, 12, 87, 9, 10, 34, 37, 24, 2]
-#metodos.ordenamientoBurbuja3(edades)
-print();
-print();
-
-print("===============ORDENAMIENTO POR SELECCION====================")
-edades=[34, 25, 12, 87, 9, 10, 34, 37, 24, 2]
-metodos.ordenamientoPorSeleccion(edades)
-print();
-print();
-
-print("===============ORDENAMIENTO POR INSERCION====================")
-edades=[34, 25, 12, 87, 9, 10, 34, 37, 24, 2]
-metodos.ordenamientoPorInsercion(edades)
-
-edades=[34, 25, 12, 87, 9, 10, 34, 37, 24, 2]
-metodos.ordenamientoPorInsercion2(edades)
+while(repetirMenuPrincipal):
+    print("1 = Metodo de ordenamiento burbuja.")
+    print("2 = Metodo de ordenamiento por seleccion.")
+    print("3 = Metodo de ordenamiento por insercion.")
+    print("4 = Elegir tamanio del vector a utilizar.")
+    print("5 = Salir")
+    print("-----------------------------------------")
+    opcion=raw_input("Elija una opcion...")
+    print()
+    print()
+    
+    if(opcion>=1 and opcion <=5):
+        if(opcion==1):
+            if(len(datos)>0):
+                repetirMenuMetodoburbuja=True
+                opcionBurbuja=0     
+                
+                while(repetirMenuMetodoburbuja):
+                    print("  Utilizar metodo...")
+                    print()
+                    print("    1 = Burbuja 0.")
+                    print("    2 = Burbuja 1.")
+                    print("    3 = Burbuja 2.")
+                    print("    4 = Burbuja 3.")
+                    print("    -----------------------------------------")
+                    opcionBurbuja=raw_input("    Elija una opcion...\n    ")
+                    print()
+                
+                    if(opcionBurbuja>=1 and opcionBurbuja <=4):                
+                        if(opcionBurbuja==1):
+                            print("  ======================================================VECTOR ORIGINAL======================================================\n")
+                            metodos.mostrarVector(datos)
+                            print("\n\n")
+                            print("  ===================================================ORDENAMIENTO BURBUJA 0==================================================\n")
+                            metodos.ordenamientoBurbuja0(datos.clone())
+                            break
+                        if(opcionBurbuja==2):
+                            print("  ======================================================VECTOR ORIGINAL======================================================\n")
+                            metodos.mostrarVector(datos)
+                            print("\n\n")
+                            print("  ===================================================ORDENAMIENTO BURBUJA 1==================================================\n")
+                            metodos.ordenamientoBurbuja1(datos.clone())
+                            break
+                        if(opcionBurbuja==3):
+                            print("  ======================================================VECTOR ORIGINAL======================================================\n")
+                            metodos.mostrarVector(datos)
+                            print("\n\n")
+                            print("  ===================================================ORDENAMIENTO BURBUJA 2==================================================\n")
+                            metodos.ordenamientoBurbuja2(datos.clone())
+                            break
+                        if(opcionBurbuja==4):
+                            print("  ======================================================VECTOR ORIGINAL======================================================\n")
+                            metodos.mostrarVector(datos)
+                            print("\n\n")
+                            print("  ===================================================ORDENAMIENTO BURBUJA 3==================================================\n")
+                            metodos.ordenamientoBurbuja3(datos.clone())
+                            break
+                        repetirMenuMetodoburbuja=False
+                    else:
+                        print("    *"+opcionBurbuja+" no es una opcion valida, intenta otra vez.")
+                    print()
+                    print()
+            else:
+                print("  *No se ha elegido un tamanio para el vector.")
+            print()
+            print()
+            break
+        if(opcion==2):
+            if(len(datos)>0):
+                print("  ======================================================VECTOR ORIGINAL======================================================\n")
+                metodos.mostrarVector(datos)
+                print("\n\n")
+                print("  =================================================ORDENAMIENTO POR SELECCION================================================\n")
+                metodos.ordenamientoPorSeleccion(datos.clone())
+            else:
+                print("  *No se ha elegido un tamanio para el vector.")
+            print()
+            print()
+            break
+        if(opcion==3):
+            if(len(datos)>0):
+                print("  ======================================================VECTOR ORIGINAL======================================================\n")
+                metodos.mostrarVector(datos)
+                print("\n\n")
+                print("  =================================================ORDENAMIENTO POR INSERCION================================================\n")
+                metodos.ordenamientoPorInsercion(datos.clone())
+            else:
+                print("  *No se ha elegido un tamanio para el vector.")
+            print()
+            print()
+            break
+        if(opcion==4):
+            repetirMenuTamanioVector=True
+            opcionVector=0
+            
+            while(repetirMenuTamanioVector):
+                print("Realizar pruebas con...")
+                print()
+                print("  1 = 1,000 datos.")
+                print("  2 = 10,000 datos.")
+                print("  3 = 100,000 datos.")
+                print("  4 = 1,000,000 datos.")
+                print("  -----------------------------------------")
+                opcionVector=raw_input("  Elija una opcion...\n  ")
+                print()
+            
+                if(opcionVector>=1 and opcionVector <=4):                
+                    if(opcion==1):
+                        datos=int[1000]
+                        print("  Creando vector...")
+                        for i in range(0,len(datos)):
+                            datos[i]=random.randint(1,101)
+                        break
+                    if(opcion==2):
+                        datos=int[10000]
+                        print("  Creando vector...")
+                        for i in range(0,len(datos)):
+                            datos[i]=random.randint(1,101)
+                        break
+                    if(opcion==3):
+                        datos=int[100000];
+                        print("  Creando vector...")
+                        for i in range(0,len(datos)):
+                            datos[i]=random.randint(1,101)
+                        break
+                    if(opcion==4):
+                        datos=int[1000000];
+                        print("  Creando vector...");
+                        for i in range(0,len(datos)):
+                            datos[i]=random.randint(1,101)
+                        break
+                    repetirMenuTamanioVector=False
+                    print()
+                    print("  El vector ha sido creado y llenado.")
+                    print()
+                    print("  *NOTA: El vector a utilizar en los metodos sera el mismo mientras que no se escoja un tamanio diferente.")
+                else:
+                    print("    *"+opcion+" no es una opcion valida, intenta otra vez.")
+                print()
+                print()
+            break
+        if(opcion==4):
+            repetirMenuPrincipal=False
+            break
+        print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+        print()
+        print()
+    else:
+        print("  *"+opcion+" no es una opcion valida, intenta otra vez.")
+        print()
+        print()
+print("Usted ha salido.")
