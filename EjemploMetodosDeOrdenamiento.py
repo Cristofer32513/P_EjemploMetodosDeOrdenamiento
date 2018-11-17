@@ -5,7 +5,7 @@ Created on 14/11/2018
 '''
 import timeit
 import random
-from pip._vendor.distlib.compat import raw_input
+
 class MetodosDeOrdenamiento:
        
     def mostrarVector(self, datos):
@@ -184,12 +184,12 @@ while(repetirMenuPrincipal):
     print("4 = Elegir tamanio del vector a utilizar.")
     print("5 = Salir")
     print("-----------------------------------------")
-    opcion=raw_input("Elija una opcion...")
+    opcion=int(input('Elija una opcion...'))
     print()
     print()
     
-    if(int(opcion)>=1 and int(opcion) <=5):
-        if(int(opcion)==1):
+    if(opcion>=1 and opcion <=5):
+        if(opcion==1):
             if(len(datos)>0):
                 repetirMenuMetodoburbuja=True
                 opcionBurbuja=0     
@@ -202,7 +202,7 @@ while(repetirMenuPrincipal):
                     print("    3 = Burbuja 2.")
                     print("    4 = Burbuja 3.")
                     print("    -----------------------------------------")
-                    opcionBurbuja=raw_input("    Elija una opcion...\n    ")
+                    opcionBurbuja=int(input("    Elija una opcion...\n    "))
                     print()
                 
                     if(opcionBurbuja>=1 and opcionBurbuja <=4):                
@@ -239,7 +239,7 @@ while(repetirMenuPrincipal):
                 print("  *No se ha elegido un tamanio para el vector.")
             print()
             print()
-        if(int(opcion)==2):
+        if(opcion==2):
             if(len(datos)>0):
                 print("  ======================================================VECTOR ORIGINAL======================================================\n")
                 metodos.mostrarVector(datos)
@@ -250,7 +250,7 @@ while(repetirMenuPrincipal):
                 print("  *No se ha elegido un tamanio para el vector.")
             print()
             print()
-        if(int(opcion)==3):
+        if(opcion==3):
             if(len(datos)>0):
                 print("  ======================================================VECTOR ORIGINAL======================================================\n")
                 metodos.mostrarVector(datos)
@@ -261,7 +261,7 @@ while(repetirMenuPrincipal):
                 print("  *No se ha elegido un tamanio para el vector.")
             print()
             print()
-        if(int(opcion)==4):
+        if(opcion==4):
             repetirMenuTamanioVector=True
             opcionVector=0
             
@@ -273,7 +273,7 @@ while(repetirMenuPrincipal):
                 print("  3 = 100,000 datos.")
                 print("  4 = 1,000,000 datos.")
                 print("  -----------------------------------------")
-                opcionVector=raw_input("  Elija una opcion...\n  ")
+                opcionVector=int(input("  Elija una opcion...\n  "))
                 print()
             
                 if(opcionVector>=1 and opcionVector <=4):                
@@ -306,13 +306,13 @@ while(repetirMenuPrincipal):
                     print("    *"+opcion+" no es una opcion valida, intenta otra vez.")
                 print()
                 print()
-        if(int(opcion)==5):
+        if(opcion==5):
             repetirMenuPrincipal=False
-        print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
-        print()
-        print()
     else:
         print("  *"+opcion+" no es una opcion valida, intenta otra vez.")
         print()
         print()
+    print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+    print()
+    print()
 print("Usted ha salido.")
