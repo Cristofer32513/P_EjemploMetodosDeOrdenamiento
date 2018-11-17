@@ -7,7 +7,12 @@ import random
 from time import time
 
 class MetodosDeOrdenamiento:
-       
+    
+    '''
+    PYTHON NO TIENE LA MISMA LOGICA
+    PARA PODER DARLE EL MISMO FORMATO
+    QUE EN JAVA
+    '''   
     def mostrarVector(self, datos):
         cont=1;
         for i in range(0, len(datos)):
@@ -28,6 +33,7 @@ class MetodosDeOrdenamiento:
         print("    - Tiempo     total     de    ejecucion:    "+str(tiempoTotal)+" segundos")
         print("    - Tiempo     total     de    ejecucion:    "+str(tiempoTotal*1000)+" milisegundos")
     
+    '''=======METODO DE ORDENAMIENTO BURBUJA======='''
     def ordenamientoBurbuja0(self, datos):
         contadorComparaciones=0
         contadorIntercambios=0
@@ -127,6 +133,7 @@ class MetodosDeOrdenamiento:
         print()
         self.mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal);
     
+    '''=======METODO DE ORDENAMIENTO POR SELECCION======='''
     def ordenamientoPorSeleccion(self, datos):
         contadorComparaciones=0
         contadorIntercambios=0
@@ -151,6 +158,7 @@ class MetodosDeOrdenamiento:
         print()
         self.mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal)
     
+    '''=======METODO DE ORDENAMIENTO POR INSERCION======='''
     def ordenamientoPorInsercion(self, datos):
         contadorComparaciones=0
         contadorIntercambios=0
