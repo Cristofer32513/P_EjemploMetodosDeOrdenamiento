@@ -184,35 +184,10 @@ class MetodosDeOrdenamiento:
         print()
         self.mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal)
     
-    def ordenamientoPorInsercion2(self, datos):
-        contadorComparaciones=0
-        contadorIntercambios=0
-        contadorRecorridos=0
-        
-        i=0
-        j=0
-        aux=0
-        inicio=time()
-        for i in range(1, len(datos)):
-            aux=datos[i]
-            j=i-1
-            contadorComparaciones+=1
-            while(j>=0 and aux<datos[j]):
-                contadorIntercambios+=1
-                datos[j+1]=datos[j]
-                j-=1
-            datos[j+1]=aux
-            contadorRecorridos+=1
-        tiempoTotal=time()-inicio;
-        self.mostrarVector(datos)
-        print()
-        print()
-        self.mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal)
-
+    
     
 metodos=MetodosDeOrdenamiento()
-                
-        
+                       
 repetirMenuPrincipal=True
 opcion=0
 datos=[]
