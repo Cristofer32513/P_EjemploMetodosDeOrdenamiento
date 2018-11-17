@@ -11,11 +11,11 @@ class MetodosDeOrdenamiento:
     def mostrarVector(self, datos):
         cont=1;
         for i in range(0, len(datos)):
-            if(cont==15):
-                print("  "+datos[i]+",    ")
+            if(int(cont)==15):
+                print("  "+str(datos[i])+",    ")
                 cont=0
             else:
-                print("  "+datos[i]+",    ")
+                print("  "+str(datos[i])+",    ", end="")
                 cont+=1;
     
     def mostrarDatosDeEficiencia(self, contadorComparaciones, contadorIntercambios,
@@ -211,28 +211,28 @@ while(repetirMenuPrincipal):
                             metodos.mostrarVector(datos)
                             print("\n\n")
                             print("  ===================================================ORDENAMIENTO BURBUJA 0==================================================\n")
-                            metodos.ordenamientoBurbuja0(datos.clone())
+                            metodos.ordenamientoBurbuja0(datos.copy())
                         if(opcionBurbuja==2):
                             print("  ======================================================VECTOR ORIGINAL======================================================\n")
                             metodos.mostrarVector(datos)
                             print("\n\n")
                             print("  ===================================================ORDENAMIENTO BURBUJA 1==================================================\n")
-                            metodos.ordenamientoBurbuja1(datos.clone())
+                            metodos.ordenamientoBurbuja1(datos.copy())
                         if(opcionBurbuja==3):
                             print("  ======================================================VECTOR ORIGINAL======================================================\n")
                             metodos.mostrarVector(datos)
                             print("\n\n")
                             print("  ===================================================ORDENAMIENTO BURBUJA 2==================================================\n")
-                            metodos.ordenamientoBurbuja2(datos.clone())
+                            metodos.ordenamientoBurbuja2(datos.copy())
                         if(opcionBurbuja==4):
                             print("  ======================================================VECTOR ORIGINAL======================================================\n")
                             metodos.mostrarVector(datos)
                             print("\n\n")
                             print("  ===================================================ORDENAMIENTO BURBUJA 3==================================================\n")
-                            metodos.ordenamientoBurbuja3(datos.clone())
+                            metodos.ordenamientoBurbuja3(datos.copy())
                         repetirMenuMetodoburbuja=False
                     else:
-                        print("    *"+opcionBurbuja+" no es una opcion valida, intenta otra vez.")
+                        print("    *"+str(opcionBurbuja)+" no es una opcion valida, intenta otra vez.")
                     print()
                     print()
             else:
@@ -245,7 +245,7 @@ while(repetirMenuPrincipal):
                 metodos.mostrarVector(datos)
                 print("\n\n")
                 print("  =================================================ORDENAMIENTO POR SELECCION================================================\n")
-                metodos.ordenamientoPorSeleccion(datos.clone())
+                metodos.ordenamientoPorSeleccion(datos.copy())
             else:
                 print("  *No se ha elegido un tamanio para el vector.")
             print()
@@ -256,7 +256,7 @@ while(repetirMenuPrincipal):
                 metodos.mostrarVector(datos)
                 print("\n\n")
                 print("  =================================================ORDENAMIENTO POR INSERCION================================================\n")
-                metodos.ordenamientoPorInsercion(datos.clone())
+                metodos.ordenamientoPorInsercion(datos.copy())
             else:
                 print("  *No se ha elegido un tamanio para el vector.")
             print()
@@ -280,22 +280,22 @@ while(repetirMenuPrincipal):
                     if(opcion==1):
                         datos=[]
                         print("  Creando vector...")
-                        for i in range(0,len(datos)):
+                        for i in range(0,10):
                             datos.insert(i, random.randint(1,101))
                     if(opcion==2):
                         datos=[]
                         print("  Creando vector...")
-                        for i in range(0,len(datos)):
+                        for i in range(0,10000):
                             datos.insert(i, random.randint(1,101))
                     if(opcion==3):
                         datos=[];
                         print("  Creando vector...")
-                        for i in range(0,len(datos)):
+                        for i in range(0,100000):
                             datos.insert(i, random.randint(1,101))
                     if(opcion==4):
                         datos=[];
                         print("  Creando vector...");
-                        for i in range(0,len(datos)):
+                        for i in range(0,1000000):
                             datos.insert(i, random.randint(1,101))
                     repetirMenuTamanioVector=False
                     print()
@@ -303,13 +303,13 @@ while(repetirMenuPrincipal):
                     print()
                     print("  *NOTA: El vector a utilizar en los metodos sera el mismo mientras que no se escoja un tamanio diferente.")
                 else:
-                    print("    *"+opcion+" no es una opcion valida, intenta otra vez.")
+                    print("    *"+str(opcion)+" no es una opcion valida, intenta otra vez.")
                 print()
                 print()
         if(opcion==5):
             repetirMenuPrincipal=False
     else:
-        print("  *"+opcion+" no es una opcion valida, intenta otra vez.")
+        print("  *"+str(opcion)+" no es una opcion valida, intenta otra vez.")
         print()
         print()
     print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
