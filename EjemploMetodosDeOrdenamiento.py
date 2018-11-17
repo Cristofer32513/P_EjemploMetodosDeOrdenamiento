@@ -3,8 +3,8 @@ Created on 14/11/2018
 
 @author: casas
 '''
-import timeit
 import random
+from time import time
 
 class MetodosDeOrdenamiento:
        
@@ -13,7 +13,7 @@ class MetodosDeOrdenamiento:
         for i in range(0, len(datos)):
             if(int(cont)==15):
                 print("  "+str(datos[i])+",    ")
-                cont=0
+                cont=1
             else:
                 print("  "+str(datos[i])+",    ", end="")
                 cont+=1;
@@ -33,6 +33,7 @@ class MetodosDeOrdenamiento:
         contadorIntercambios=0
         contadorRecorridos=0        
         aux=0
+        inicio=time()
         for i in range(0, len(datos)):
             for j in range(i+1, len(datos)):
                 contadorComparaciones+=1
@@ -44,7 +45,7 @@ class MetodosDeOrdenamiento:
                 
             
             contadorRecorridos+=1
-        tiempoTotal=timeit.timeit()
+        tiempoTotal=time()-inicio;
         self.mostrarVector(datos)
         print()
         print()
@@ -56,6 +57,7 @@ class MetodosDeOrdenamiento:
         contadorRecorridos=0
         
         aux=0;
+        inicio=time()
         for i in range(2, (len(datos)+1)):
             for j in range(0, (len(datos)+1)-i):
                 contadorComparaciones+=1
@@ -65,7 +67,7 @@ class MetodosDeOrdenamiento:
                     datos[j]=datos[j+1]
                     datos[j+1]=aux
             contadorRecorridos+=1
-        tiempoTotal=timeit.timeit()
+        tiempoTotal=time()-inicio;
         self.mostrarVector(datos)
         print()
         print()
@@ -79,6 +81,7 @@ class MetodosDeOrdenamiento:
         i=1
         ordenado=False
         aux=0
+        inicio=time()
         while(i<len(datos) and not ordenado):
             i+=1
             ordenado=True
@@ -91,17 +94,45 @@ class MetodosDeOrdenamiento:
                     datos[j]=datos[j+1]
                     datos[j+1]=aux
             contadorRecorridos+=1
-        tiempoTotal=timeit.timeit()
+        tiempoTotal=time()-inicio;
         self.mostrarVector(datos)
         print()
         print()
         self.mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal)
     
-    def ordenamientoPorSeleccion(self, datos):
+    def ordenamientoBurbuja3(self, datos):
         contadorComparaciones=0
         contadorIntercambios=0
         contadorRecorridos=0
         
+        i=1
+        ordenado=False
+        aux=0
+        inicio=time()
+        while(i<len(datos) or not ordenado):
+            i+=1
+            ordenado=True
+            for j in range(0, (len(datos)+1)-i):
+                contadorComparaciones+=1
+                if(datos[j]>datos[j+1]):
+                    contadorIntercambios+=1
+                    ordenado=False
+                    aux=datos[j]
+                    datos[j]=datos[j+1]
+                    datos[j+1]=aux
+            contadorRecorridos+=1
+        tiempoTotal=time()-inicio;
+        self.mostrarVector(datos);
+        print()
+        print()
+        self.mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal);
+    
+    def ordenamientoPorSeleccion(self, datos):
+        contadorComparaciones=0
+        contadorIntercambios=0
+        contadorRecorridos=0
+        inicio=time()
+
         for i in range(0, len(datos)):
             menor=i
             for j in range(i+1, len(datos)):
@@ -114,7 +145,7 @@ class MetodosDeOrdenamiento:
             contadorIntercambios+=1
             contadorRecorridos+=1
             contadorIntercambios+=1
-        tiempoTotal=timeit.timeit()
+        tiempoTotal=time()-inicio;
         self.mostrarVector(datos)
         print()
         print()
@@ -125,6 +156,7 @@ class MetodosDeOrdenamiento:
         contadorIntercambios=0
         contadorRecorridos=0
         
+        inicio=time()
         for i in range(1, len(datos)):
             valor=datos[i]
             j=i-1
@@ -138,7 +170,7 @@ class MetodosDeOrdenamiento:
                 else:
                     break
             contadorRecorridos+=1
-        tiempoTotal=timeit.timeit();
+        tiempoTotal=time()-inicio;
         self.mostrarVector(datos)
         print()
         print()
@@ -152,7 +184,7 @@ class MetodosDeOrdenamiento:
         i=0
         j=0
         aux=0
-        
+        inicio=time()
         for i in range(1, len(datos)):
             aux=datos[i]
             j=i-1
@@ -163,7 +195,7 @@ class MetodosDeOrdenamiento:
                 j-=1
             datos[j+1]=aux
             contadorRecorridos+=1
-        tiempoTotal=timeit.timeit()
+        tiempoTotal=time()-inicio;
         self.mostrarVector(datos)
         print()
         print()
@@ -277,26 +309,26 @@ while(repetirMenuPrincipal):
                 print()
             
                 if(opcionVector>=1 and opcionVector <=4):                
-                    if(opcion==1):
+                    if(opcionVector==1):
                         datos=[]
                         print("  Creando vector...")
-                        for i in range(0,10):
-                            datos.insert(i, random.randint(1,101))
-                    if(opcion==2):
+                        for i in range(0,1000):
+                            datos.insert(i, random.randint(1,100))
+                    if(opcionVector==2):
                         datos=[]
                         print("  Creando vector...")
                         for i in range(0,10000):
-                            datos.insert(i, random.randint(1,101))
-                    if(opcion==3):
+                            datos.insert(i, random.randint(1,100))
+                    if(opcionVector==3):
                         datos=[];
                         print("  Creando vector...")
                         for i in range(0,100000):
-                            datos.insert(i, random.randint(1,101))
-                    if(opcion==4):
+                            datos.insert(i, random.randint(1,100))
+                    if(opcionVector==4):
                         datos=[];
                         print("  Creando vector...");
                         for i in range(0,1000000):
-                            datos.insert(i, random.randint(1,101))
+                            datos.insert(i, random.randint(1,100))
                     repetirMenuTamanioVector=False
                     print()
                     print("  El vector ha sido creado y llenado.")
