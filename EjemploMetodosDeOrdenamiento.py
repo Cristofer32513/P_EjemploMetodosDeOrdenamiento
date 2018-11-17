@@ -14,19 +14,19 @@ class MetodosDeOrdenamiento:
     QUE EN JAVA
     '''   
     def mostrarVector(self, datos):
-        cont=1;
+        cont=1
         for i in range(0, len(datos)):
             if(int(cont)==15):
                 print("  "+str(datos[i])+",    ")
                 cont=1
             else:
                 print("  "+str(datos[i])+",    ", end="")
-                cont+=1;
+                cont+=1
     
     def mostrarDatosDeEficiencia(self, contadorComparaciones, contadorIntercambios,
                                  contadorRecorridos, tiempoTotal):
-        print("       DATOS DE EFICIENCIA DEL ALGORITMO");
-        print();
+        print("       DATOS DE EFICIENCIA DEL ALGORITMO")
+        print()
         print("    - Cantidad  de  recorridos  realizados:    "+str(contadorRecorridos))
         print("    - Cantidad de comparaciones realizadas:    "+str(contadorComparaciones))
         print("    - Cantidad  de intercambios realizados:    "+str(contadorIntercambios))
@@ -48,21 +48,19 @@ class MetodosDeOrdenamiento:
                     aux=datos[i]
                     datos[i]=datos[j]
                     datos[j]=aux
-                
-            
             contadorRecorridos+=1
-        tiempoTotal=time()-inicio;
+        tiempoTotal=time()-inicio
         self.mostrarVector(datos)
         print()
         print()
-        self.mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal);
+        self.mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal)
     
     def ordenamientoBurbuja1(self, datos):
         contadorComparaciones=0
         contadorIntercambios=0
         contadorRecorridos=0
+        aux=0
         
-        aux=0;
         inicio=time()
         for i in range(2, (len(datos)+1)):
             for j in range(0, (len(datos)+1)-i):
@@ -73,7 +71,7 @@ class MetodosDeOrdenamiento:
                     datos[j]=datos[j+1]
                     datos[j+1]=aux
             contadorRecorridos+=1
-        tiempoTotal=time()-inicio;
+        tiempoTotal=time()-inicio
         self.mostrarVector(datos)
         print()
         print()
@@ -83,10 +81,10 @@ class MetodosDeOrdenamiento:
         contadorComparaciones=0
         contadorIntercambios=0
         contadorRecorridos=0
-        
         i=1
         ordenado=False
         aux=0
+        
         inicio=time()
         while(i<len(datos) and not ordenado):
             i+=1
@@ -100,7 +98,7 @@ class MetodosDeOrdenamiento:
                     datos[j]=datos[j+1]
                     datos[j+1]=aux
             contadorRecorridos+=1
-        tiempoTotal=time()-inicio;
+        tiempoTotal=time()-inicio
         self.mostrarVector(datos)
         print()
         print()
@@ -110,10 +108,10 @@ class MetodosDeOrdenamiento:
         contadorComparaciones=0
         contadorIntercambios=0
         contadorRecorridos=0
-        
         i=1
         ordenado=False
         aux=0
+        
         inicio=time()
         while(i<len(datos) or not ordenado):
             i+=1
@@ -127,19 +125,19 @@ class MetodosDeOrdenamiento:
                     datos[j]=datos[j+1]
                     datos[j+1]=aux
             contadorRecorridos+=1
-        tiempoTotal=time()-inicio;
-        self.mostrarVector(datos);
+        tiempoTotal=time()-inicio
+        self.mostrarVector(datos)
         print()
         print()
-        self.mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal);
+        self.mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal)
     
     '''=======METODO DE ORDENAMIENTO POR SELECCION======='''
     def ordenamientoPorSeleccion(self, datos):
         contadorComparaciones=0
         contadorIntercambios=0
         contadorRecorridos=0
+        
         inicio=time()
-
         for i in range(0, len(datos)):
             menor=i
             for j in range(i+1, len(datos)):
@@ -152,7 +150,7 @@ class MetodosDeOrdenamiento:
             contadorIntercambios+=1
             contadorRecorridos+=1
             contadorIntercambios+=1
-        tiempoTotal=time()-inicio;
+        tiempoTotal=time()-inicio
         self.mostrarVector(datos)
         print()
         print()
@@ -169,7 +167,7 @@ class MetodosDeOrdenamiento:
             valor=datos[i]
             j=i-1
             while(j>=0):
-                contadorComparaciones+=1;
+                contadorComparaciones+=1
                 if(valor<datos[j]):
                     contadorIntercambios+=1
                     datos[j+1]=datos[j]
@@ -178,7 +176,7 @@ class MetodosDeOrdenamiento:
                 else:
                     break
             contadorRecorridos+=1
-        tiempoTotal=time()-inicio;
+        tiempoTotal=time()-inicio
         self.mostrarVector(datos)
         print()
         print()
@@ -303,13 +301,13 @@ while(repetirMenuPrincipal):
                         for i in range(0,10000):
                             datos.insert(i, random.randint(1,100))
                     if(opcionVector==3):
-                        datos=[];
+                        datos=[]
                         print("  Creando vector...")
                         for i in range(0,100000):
                             datos.insert(i, random.randint(1,100))
                     if(opcionVector==4):
-                        datos=[];
-                        print("  Creando vector...");
+                        datos=[]
+                        print("  Creando vector...")
                         for i in range(0,1000000):
                             datos.insert(i, random.randint(1,100))
                     repetirMenuTamanioVector=False
