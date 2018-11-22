@@ -215,8 +215,54 @@ class MetodosDeOrdenamiento:
         self.mostrarVector(datos)
         print()
         print()
-        self.mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal)
+        self.mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal) 
     
+    '''========METODO DE ORDENAMIENTO SELLSORT========='''
+    '''def ordenamientoSellSort(self, datos):
+        contadorComparaciones=0
+        contadorIntercambios=0
+        contadorRecorridos=0
+        salto=0
+        aux=0
+        i=0
+        cambios=True
+        
+        inicio=time()
+        for salto=(len(datos)/2) in range(salto>0);salto/=2){
+            cambios=True
+            while(cambios)
+                cambios=False
+                contadorRecorridos+=1
+                for i=salto in range(0, len(datos))
+                    contadorComparaciones+=1
+                    if(datos[i-salto]>datos[i]):
+                        contadorIntercambios+=1
+                        aux=datos[i]
+                        datos[i]=datos[i-salto]
+                        datos[i-salto]=aux
+                        cambios=True
+        tiempoTotal=time()-inicio
+        System.out.println();
+        System.out.println();
+        mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal);
+    }'''
+        
+    def ordenamientoQuickSort(self, lista):
+        izquierda=[]
+        centro=[]
+        derecha=[]
+        if(len(lista)>1):
+            pivote=lista[0]
+            for i in lista:
+                if(i<pivote):
+                    izquierda.append(i)
+                elif (i==pivote):
+                    centro.append(i);
+                elif (i>pivote):
+                    derecha.append(i);
+            return self.ordenamientoQuickSort(izquierda)+centro+self.ordenamientoQuickSort(derecha)
+        else:
+            return lista
     
 metodos=MetodosDeOrdenamiento()
                        
