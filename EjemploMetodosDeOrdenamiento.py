@@ -271,17 +271,18 @@ opcion=0
 datos=[]
 
 while(repetirMenuPrincipal):
-    print("1 = Metodo de ordenamiento burbuja.")
-    print("2 = Metodo de ordenamiento por seleccion.")
-    print("3 = Metodo de ordenamiento por insercion.")
-    print("4 = Elegir tamanio del vector a utilizar.")
-    print("5 = Salir")
+    print("1 = Metodo de ordenamiento Burbuja.")
+    print("2 = Metodo de ordenamiento Por Seleccion.")
+    print("3 = Metodo de ordenamiento Por Insercion.")
+    print("4 = Metodo de ordenamiento QuickSort.")
+    print("5 = Elegir tamanio del vector a utilizar.")
+    print("6 = Salir")
     print("-----------------------------------------")
     opcion=int(input('Elija una opcion...'))
     print()
     print()
     
-    if(opcion>=1 and opcion <=5):
+    if(opcion>=1 and opcion <=6):
         if(opcion==1):
             if(len(datos)>0):
                 repetirMenuMetodoburbuja=True
@@ -355,6 +356,17 @@ while(repetirMenuPrincipal):
             print()
             print()
         if(opcion==4):
+            if(len(datos)>0):
+                print("  ======================================================VECTOR ORIGINAL======================================================\n")
+                metodos.mostrarVector(datos)
+                print("\n\n")
+                print("  =================================================ORDENAMIENTO QUICKSORT================================================\n")
+                metodos.ordenamientoQuickSort(datos.copy())
+            else:
+                print("  *No se ha elegido un tamanio para el vector.")
+            print()
+            print()
+        if(opcion==5):
             repetirMenuTamanioVector=True
             opcionVector=0
             
@@ -399,7 +411,7 @@ while(repetirMenuPrincipal):
                     print("    *"+str(opcion)+" no es una opcion valida, intenta otra vez.")
                 print()
                 print()
-        if(opcion==5):
+        if(opcion==6):
             repetirMenuPrincipal=False
     else:
         print("  *"+str(opcion)+" no es una opcion valida, intenta otra vez.")
