@@ -33,6 +33,7 @@ class MetodosDeOrdenamiento:
         print("    - Tiempo     total     de    ejecucion:    "+str(tiempoTotal)+" segundos")
         print("    - Tiempo     total     de    ejecucion:    "+str(tiempoTotal*1000)+" milisegundos")
     
+    
     '''=======METODO DE ORDENAMIENTO BURBUJA======='''
     def ordenamientoBurbuja0(self, datos):
         contadorComparaciones=0
@@ -131,6 +132,7 @@ class MetodosDeOrdenamiento:
         print()
         self.mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal)
     
+    
     '''=======METODO DE ORDENAMIENTO POR SELECCION======='''
     def ordenamientoPorSeleccion(self, datos):
         contadorComparaciones=0
@@ -155,6 +157,7 @@ class MetodosDeOrdenamiento:
         print()
         print()
         self.mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal)
+    
     
     '''=======METODO DE ORDENAMIENTO POR INSERCION======='''
     '''
@@ -217,6 +220,7 @@ class MetodosDeOrdenamiento:
         print()
         self.mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal) 
     
+    
     '''========METODO DE ORDENAMIENTO SELLSORT========='''
     '''def ordenamientoSellSort(self, datos):
         contadorComparaciones=0
@@ -246,24 +250,31 @@ class MetodosDeOrdenamiento:
         System.out.println();
         mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal);
     }'''
-        
-    def ordenamientoQuickSort(self, lista):
-        izquierda=[]
-        centro=[]
-        derecha=[]
-        if(len(lista)>1):
-            pivote=lista[0]
-            for i in lista:
-                if(i<pivote):
-                    izquierda.append(i)
-                elif (i==pivote):
-                    centro.append(i);
-                elif (i>pivote):
-                    derecha.append(i);
-            return self.ordenamientoQuickSort(izquierda)+centro+self.ordenamientoQuickSort(derecha)
-        else:
-            return lista
     
+    '''========METODO DE ORDENAMIENTO QUICKSORT=========''' 
+    def partition(self, arr, low, high):
+        i = ( low-1 )
+        pivot = arr[high]
+ 
+        for j in range(low , high):
+            if   arr[j] <= pivot:
+                i = i+1
+                arr[i],arr[j] = arr[j],arr[i]
+ 
+        arr[i+1],arr[high] = arr[high],arr[i+1]
+        return ( i+1 )
+
+    def ordenamientoQuickSort(self, arr, low, high):
+        if low < high:
+            pi = self.partition(arr, low, high)
+            self.ordenamientoQuickSort(arr, low, pi-1)
+            self.ordenamientoQuickSort(arr, pi+1, high)
+            
+            
+            
+            
+            
+            
 metodos=MetodosDeOrdenamiento()
                        
 repetirMenuPrincipal=True
@@ -361,7 +372,14 @@ while(repetirMenuPrincipal):
                 metodos.mostrarVector(datos)
                 print("\n\n")
                 print("  =================================================ORDENAMIENTO QUICKSORT================================================\n")
-                metodos.ordenamientoQuickSort(datos.copy())
+                copiaDatos=datos.copy()
+                inicio=time()
+                metodos.ordenamientoQuickSort(copiaDatos, 0, len(copiaDatos)-1)
+                tiempoTotal=time()-inicio
+                metodos.mostrarVector(copiaDatos)
+                print()
+                print()
+                metodos.mostrarDatosDeEficiencia(0, 0, 0, tiempoTotal)
             else:
                 print("  *No se ha elegido un tamanio para el vector.")
             print()
