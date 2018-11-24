@@ -222,46 +222,45 @@ class MetodosDeOrdenamiento:
     
     
     '''========METODO DE ORDENAMIENTO SELLSORT========='''
-    '''def ordenamientoSellSort(self, datos):
+    def ordenamientoShellSort(self, datos): 
         contadorComparaciones=0
         contadorIntercambios=0
         contadorRecorridos=0
-        salto=0
-        aux=0
-        i=0
-        cambios=True
         
-        inicio=time()
-        for salto=(len(datos)/2) in range(salto>0);salto/=2){
-            cambios=True
-            while(cambios)
-                cambios=False
-                contadorRecorridos+=1
-                for i=salto in range(0, len(datos))
-                    contadorComparaciones+=1
-                    if(datos[i-salto]>datos[i]):
-                        contadorIntercambios+=1
-                        aux=datos[i]
-                        datos[i]=datos[i-salto]
-                        datos[i-salto]=aux
-                        cambios=True
+        n=len(datos)
+        gap=n//2
+        inicio = time()
+        while gap > 0:
+            for i in range(gap,n):
+                temp = datos[i]
+                j = i 
+                contadorComparaciones+=1
+                while  j >= gap and datos[j-gap] >temp:
+                    datos[j] = datos[j-gap] 
+                    j -= gap
+                    contadorIntercambios+=1
+                datos[j] = temp 
+                contadorRecorridos=1
+            gap //= 2
+        
         tiempoTotal=time()-inicio
-        System.out.println();
-        System.out.println();
-        mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal);
-    }'''
+        self.mostrarVector(datos)
+        print()
+        print()
+        self.mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal) 
+    
     
     '''========METODO DE ORDENAMIENTO QUICKSORT=========''' 
-    def partition(self, arr, low, high):
+    def partition(self, datos, low, high):
         i = ( low-1 )
-        pivot = arr[high]
+        pivot = datos[high]
  
         for j in range(low , high):
-            if   arr[j] <= pivot:
+            if   datos[j] <= pivot:
                 i = i+1
-                arr[i],arr[j] = arr[j],arr[i]
+                datos[i],datos[j] = datos[j],datos[i]
  
-        arr[i+1],arr[high] = arr[high],arr[i+1]
+        datos[i+1],datos[high] = datos[high],datos[i+1]
         return ( i+1 )
 
     def ordenamientoQuickSort(self, arr, low, high):
@@ -285,9 +284,10 @@ while(repetirMenuPrincipal):
     print("1 = Metodo de ordenamiento Burbuja.")
     print("2 = Metodo de ordenamiento Por Seleccion.")
     print("3 = Metodo de ordenamiento Por Insercion.")
-    print("4 = Metodo de ordenamiento QuickSort.")
-    print("5 = Elegir tamanio del vector a utilizar.")
-    print("6 = Salir")
+    print("4 = Metodo de ordenamiento ShellSort.")
+    print("5 = Metodo de ordenamiento QuickSort.")
+    print("6 = Elegir tamanio del vector a utilizar.")
+    print("7 = Salir")
     print("-----------------------------------------")
     opcion=int(input('Elija una opcion...'))
     print()
@@ -371,6 +371,17 @@ while(repetirMenuPrincipal):
                 print("  ======================================================VECTOR ORIGINAL======================================================\n")
                 metodos.mostrarVector(datos)
                 print("\n\n")
+                print("  =================================================ORDENAMIENTO SHELLSORT================================================\n")
+                metodos.ordenamientoShellSort(datos.copy())
+            else:
+                print("  *No se ha elegido un tamanio para el vector.")
+            print()
+            print()
+        if(opcion==5):
+            if(len(datos)>0):
+                print("  ======================================================VECTOR ORIGINAL======================================================\n")
+                metodos.mostrarVector(datos)
+                print("\n\n")
                 print("  =================================================ORDENAMIENTO QUICKSORT================================================\n")
                 copiaDatos=datos.copy()
                 inicio=time()
@@ -384,7 +395,7 @@ while(repetirMenuPrincipal):
                 print("  *No se ha elegido un tamanio para el vector.")
             print()
             print()
-        if(opcion==5):
+        if(opcion==6):
             repetirMenuTamanioVector=True
             opcionVector=0
             
@@ -429,7 +440,7 @@ while(repetirMenuPrincipal):
                     print("    *"+str(opcion)+" no es una opcion valida, intenta otra vez.")
                 print()
                 print()
-        if(opcion==6):
+        if(opcion==7):
             repetirMenuPrincipal=False
     else:
         print("  *"+str(opcion)+" no es una opcion valida, intenta otra vez.")
