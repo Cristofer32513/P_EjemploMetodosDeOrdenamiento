@@ -7,6 +7,7 @@ import random
 from time import time
 from math import log
 from builtins import sorted
+from tkinter.constants import END
 
 class MetodosDeOrdenamiento:
     
@@ -317,18 +318,35 @@ class MetodosDeOrdenamiento:
 
     '''========METODO DE ORDENAMIENTO POR INTERCALACION========='''
     def ordenamientoPorIntercalaion(self):
-        archivo3=open ("ArchivoSalida.txt", "w")
-        archivo1=open("Archivo1.txt", "r")
-        archivo2=open("Archivo2.txt", "r")
+        contadorComparaciones=0
+        contadorIntercambios=0
+        contadorRecorridos=0
+        
+        ar3="ArchivoSalida.txt"
+        ar1="Archivo1.txt"
+        ar2="Archivo2.txt"
+        archivo3=open (ar3, "w")
+        archivo1=open(ar1, "r")
+        archivo2=open(ar2, "r")
         repetir=True
-          
+        
+        print("  ======================================================DATOS DEL ARCHIVO 1======================================================\n")
+        self.mostrarArchivo(ar1)
+        print("  ======================================================DATOS DEL ARCHIVO 2======================================================\n")
+        self.mostrarArchivo(ar2)
+        print()
+        print()
+        
         lineaArchivo1=archivo1.readline() 
         lineaArchivo2=archivo2.readline()
          
-        
+        inicio = time()
+        contadorRecorridos+=1
         '''Se realizan comparaciones mientras la bandera no cambie'''
         while(repetir):
+            contadorComparaciones+=1
             if(int(lineaArchivo1)<int(lineaArchivo2)):
+                contadorIntercambios+=1
                 archivo3.write(lineaArchivo1)
                 lineaArchivo1=archivo1.readline()
                 if(lineaArchivo1==""):
@@ -340,6 +358,7 @@ class MetodosDeOrdenamiento:
                         lineaArchivo2=archivo2.readline()
                     repetir=False
             elif(int(lineaArchivo1)>int(lineaArchivo2)):
+                contadorIntercambios+=1
                 archivo3.write(lineaArchivo2)
                 lineaArchivo2=archivo2.readline()
                 if(lineaArchivo2==""):
@@ -373,9 +392,26 @@ class MetodosDeOrdenamiento:
                     repetir=False
         archivo2.close
         archivo1.close
-        print("Archivos combinados y ordenados correctamente")
+        #print("Archivos combinados y ordenados correctamente")
         archivo3.close
+        tiempoTotal=time()-inicio
+        print("  =================================================ORDENAMIENTO POR INTERCALACION================================================\n")
+        self.mostrarArchivo(ar3)
+        print()
+        print()
+        self.mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal) 
        
+    def mostrarArchivo(self, ar):
+        archivo=open(ar, "r")
+        linea=archivo.readline()
+        while(linea!=""):
+            print(linea+", ", end="")
+            linea=archivo.readline()
+        print()
+        print()
+        
+        
+        
 metodos=MetodosDeOrdenamiento()
                        
 repetirMenuPrincipal=True
