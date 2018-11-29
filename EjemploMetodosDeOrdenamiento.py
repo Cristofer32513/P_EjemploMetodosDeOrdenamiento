@@ -7,7 +7,6 @@ import random
 from time import time
 from math import log
 from builtins import sorted
-from tkinter.constants import END
 
 class MetodosDeOrdenamiento:
     
@@ -317,15 +316,15 @@ class MetodosDeOrdenamiento:
             
 
     '''========METODO DE ORDENAMIENTO POR INTERCALACION========='''
-    def ordenamientoPorIntercalaion(self):
+    def ordenamientoPorIntercalacion(self):
         contadorComparaciones=0
         contadorIntercambios=0
         contadorRecorridos=0
         
-        ar3="ArchivoSalida.txt"
-        ar1="Archivo1.txt"
-        ar2="Archivo2.txt"
-        archivo3=open (ar3, "w")
+        ar3="ArchivoSalidaI.txt"
+        ar1="ArchivoI1.txt"
+        ar2="ArchivoI2.txt"
+        archivo3=open(ar3, "w")
         archivo1=open(ar1, "r")
         archivo2=open(ar2, "r")
         repetir=True
@@ -337,7 +336,7 @@ class MetodosDeOrdenamiento:
         print()
         print()
         
-        lineaArchivo1=archivo1.readline() 
+        lineaArchivo1=archivo1.readline()
         lineaArchivo2=archivo2.readline()
          
         inicio = time()
@@ -396,7 +395,7 @@ class MetodosDeOrdenamiento:
         archivo3.close
         tiempoTotal=time()-inicio
         print("  =================================================ORDENAMIENTO POR INTERCALACION================================================\n")
-        self.mostrarArchivo(ar3)
+        self.mostrarArchivo("ArchivoI1.txt")
         print()
         print()
         self.mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal) 
@@ -404,8 +403,10 @@ class MetodosDeOrdenamiento:
     def mostrarArchivo(self, ar):
         archivo=open(ar, "r")
         linea=archivo.readline()
+        print("  ", end="")
         while(linea!=""):
-            print(linea+", ", end="")
+            print((linea[0:len(linea)-1]+", "), end="")
+            #print(linea+", ", end="")
             linea=archivo.readline()
         print()
         print()
@@ -425,14 +426,15 @@ while(repetirMenuPrincipal):
     print("4 = Metodo de ordenamiento ShellSort.")
     print("5 = Metodo de ordenamiento QuickSort.")
     print("6 = Metodo de ordenamiento RadixSort.")
-    print("7 = Elegir tamanio del vector a utilizar.")
-    print("8 = Salir")
+    print("7 = Metodo de ordenamiento por Intercalacion.")
+    print("8 = Elegir tamanio del vector a utilizar.")
+    print("9 = Salir")
     print("-----------------------------------------")
     opcion=int(input('Elija una opcion...'))
     print()
     print()
     
-    if(opcion>=1 and opcion <=8):
+    if(opcion>=1 and opcion <=9):
         if(opcion==1):
             if(len(datos)>0):
                 repetirMenuMetodoburbuja=True
@@ -555,6 +557,10 @@ while(repetirMenuPrincipal):
             print()
             print()
         if(opcion==7):
+            metodos.ordenamientoPorIntercalacion()
+            print()
+            print()
+        if(opcion==8):
             repetirMenuTamanioVector=True
             opcionVector=0
             
@@ -599,7 +605,7 @@ while(repetirMenuPrincipal):
                     print("    *"+str(opcion)+" no es una opcion valida, intenta otra vez.")
                 print()
                 print()
-        if(opcion==8):
+        if(opcion==9):
             repetirMenuPrincipal=False
     else:
         print("  *"+str(opcion)+" no es una opcion valida, intenta otra vez.")
