@@ -395,9 +395,7 @@ class MetodosDeOrdenamiento:
         archivo3.close
         tiempoTotal=time()-inicio
         print("  =================================================ORDENAMIENTO POR INTERCALACION================================================\n")
-        self.mostrarArchivo("ArchivoI1.txt")
-        print()
-        print()
+        self.mostrarArchivo(ar3)
         self.mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal) 
        
     def mostrarArchivo(self, ar):
@@ -406,11 +404,45 @@ class MetodosDeOrdenamiento:
         print("  ", end="")
         while(linea!=""):
             print((linea[0:len(linea)-1]+", "), end="")
-            #print(linea+", ", end="")
             linea=archivo.readline()
         print()
         print()
-        
+    
+    
+    '''========METODO DE ORDENAMIENTO MEZCLA NATURAL========='''
+    def mezclaNatural(self, arr): 
+        if len(arr) >1: 
+            mitad = len(arr)//2 
+            aux1 = arr[:mitad]   
+            aux2 = arr[mitad:] 
+            self.mezclaNatural(aux1) 
+            self.mezclaNatural(aux2)  
+  
+            i = j = k = 0
+
+            while i < len(aux1) and j < len(aux2): 
+                if aux1[i] < aux2[j]: 
+                    arr[k] = aux1[i] 
+                    i+=1
+                else: 
+                    arr[k] = aux2[j] 
+                    j+=1
+                k+=1
+          
+            while i < len(aux1): 
+                arr[k] = aux1[i] 
+                i+=1
+                k+=1
+              
+            while j < len(aux2): 
+                arr[k] = aux2[j] 
+                j+=1
+                k+=1
+
+    def mostrar(self, arr): 
+        for i in range(len(arr)):         
+            print(arr[i],end=" ") 
+        print()     
         
         
 metodos=MetodosDeOrdenamiento()
