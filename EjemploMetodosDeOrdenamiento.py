@@ -459,14 +459,15 @@ while(repetirMenuPrincipal):
     print("5 = Metodo de ordenamiento QuickSort.")
     print("6 = Metodo de ordenamiento RadixSort.")
     print("7 = Metodo de ordenamiento por Intercalacion.")
-    print("8 = Elegir tamanio del vector a utilizar.")
-    print("9 = Salir")
+    print("8 = Metodo de ordenamiento Mezcla Natural.")
+    print("9 = Elegir tamanio del vector a utilizar.")
+    print("10 = Salir")
     print("-----------------------------------------")
     opcion=int(input('Elija una opcion...'))
     print()
     print()
     
-    if(opcion>=1 and opcion <=9):
+    if(opcion>=1 and opcion <=10):
         if(opcion==1):
             if(len(datos)>0):
                 repetirMenuMetodoburbuja=True
@@ -593,6 +594,16 @@ while(repetirMenuPrincipal):
             print()
             print()
         if(opcion==8):
+            archivo1=open("Archivo1.txt", "r")
+            lineaArchivo1=archivo1.readline() 
+            arr=lineaArchivo1.split(",")
+            archivo1.close
+            metodos.mostrar(arr) 
+            metodos.mezclaNatural(arr) 
+            metodos.mostrar(arr) 
+            print()
+            print()
+        if(opcion==9):
             repetirMenuTamanioVector=True
             opcionVector=0
             
@@ -637,7 +648,7 @@ while(repetirMenuPrincipal):
                     print("    *"+str(opcion)+" no es una opcion valida, intenta otra vez.")
                 print()
                 print()
-        if(opcion==9):
+        if(opcion==10):
             repetirMenuPrincipal=False
     else:
         print("  *"+str(opcion)+" no es una opcion valida, intenta otra vez.")
