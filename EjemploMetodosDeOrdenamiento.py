@@ -648,10 +648,6 @@ while(repetirMenuPrincipal):
                     lst.append(int(line.strip()))
                     
             metodos.selectionSort(lst)
-                        
-            
-            
-            
             print()
             print()
         if(opcion==9):
