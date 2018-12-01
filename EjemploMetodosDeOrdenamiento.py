@@ -419,6 +419,40 @@ class MetodosDeOrdenamiento:
         print()
     
     
+    '''========METODO DE ORDENAMIENTO MEZCLA DIRECTA========='''
+    def swap(self, a, i, j):
+        (a[i], a[j]) = (a[j], a[i])
+
+
+    def selectionSort(self, a):
+        contadorComparaciones=0
+        contadorIntercambios=0
+        contadorRecorridos=0
+        
+        inicio = time()
+        n = len(a)
+        for startIndex in range(n):
+            contadorRecorridos+=1
+            minIndex = startIndex
+            for ind in range(startIndex+1, n):
+                contadorComparaciones+=1
+                if a[ind] < a[minIndex]:
+                    contadorIntercambios+=1
+                    minIndex = ind
+            self.swap(a, startIndex, minIndex)
+        tiempoTotal=time()-inicio
+        
+        self.escribir(a)
+        print("  =================================================ORDENAMIENTO ORDENADO================================================\n")
+        self.mostrarArchivo("ArchivoSalidaMD.txt")
+        self.mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal) 
+    
+    def escribir(self, lista):
+        arch = open("ArchivoSalidaMD.txt","w")
+        for x in lista:
+            arch.write(str(x)+"\n")
+        arch.close()
+    
     '''========METODO DE ORDENAMIENTO MEZCLA NATURAL========='''
     def mezclaNatural(self, arr): 
         if len(arr) >1: 
@@ -458,22 +492,23 @@ opcion=0
 datos=[]
 
 while(repetirMenuPrincipal):
-    print("1 = Metodo de ordenamiento Burbuja.")
-    print("2 = Metodo de ordenamiento Por Seleccion.")
-    print("3 = Metodo de ordenamiento Por Insercion.")
-    print("4 = Metodo de ordenamiento ShellSort.")
-    print("5 = Metodo de ordenamiento QuickSort.")
-    print("6 = Metodo de ordenamiento RadixSort.")
-    print("7 = Metodo de ordenamiento por Intercalacion.")
-    print("8 = Metodo de ordenamiento Mezcla Natural.")
-    print("9 = Elegir tamanio del vector a utilizar.")
-    print("10 = Salir")
+    print(" 1 = Metodo de ordenamiento Burbuja.")
+    print(" 2 = Metodo de ordenamiento Por Seleccion.")
+    print(" 3 = Metodo de ordenamiento Por Insercion.")
+    print(" 4 = Metodo de ordenamiento ShellSort.")
+    print(" 5 = Metodo de ordenamiento QuickSort.")
+    print(" 6 = Metodo de ordenamiento RadixSort.")
+    print(" 7 = Metodo de ordenamiento por Intercalacion.")
+    print(" 8 = Metodo de ordenamiento Mezcla Directa.")
+    print(" 9 = Metodo de ordenamiento Mezcla Natural.")
+    print("10 = Elegir tamanio del vector a utilizar.")
+    print("11 = Salir")
     print("-----------------------------------------")
     opcion=int(input('Elija una opcion...'))
     print()
     print()
     
-    if(opcion>=1 and opcion <=10):
+    if(opcion>=1 and opcion <=11):
         if(opcion==1):
             if(len(datos)>0):
                 repetirMenuMetodoburbuja=True
@@ -604,6 +639,22 @@ while(repetirMenuPrincipal):
             print()
             print()
         if(opcion==8):
+            print("  ======================================================ARCHIVO ORIGINAL======================================================\n")
+            metodos.mostrarArchivo("ArchivoMD.txt") 
+            
+            lst = []
+            with open("ArchivoMD.txt", "r") as f:
+                for line in f:
+                    lst.append(int(line.strip()))
+                    
+            metodos.selectionSort(lst)
+                        
+            
+            
+            
+            print()
+            print()
+        if(opcion==9):
             archivo1=open("ArchivoMN.txt", "r")
             lineaArchivo1=archivo1.readline() 
             arr=lineaArchivo1.split(",")
@@ -622,7 +673,7 @@ while(repetirMenuPrincipal):
             metodos.mostrarDatosDeEficiencia(0, 0, 0, tiempoTotal)
             print()
             print()
-        if(opcion==9):
+        if(opcion==10):
             repetirMenuTamanioVector=True
             opcionVector=0
             
@@ -667,7 +718,7 @@ while(repetirMenuPrincipal):
                     print("    *"+str(opcion)+" no es una opcion valida, intenta otra vez.")
                 print()
                 print()
-        if(opcion==10):
+        if(opcion==11):
             repetirMenuPrincipal=False
     else:
         print("  *"+str(opcion)+" no es una opcion valida, intenta otra vez.")
