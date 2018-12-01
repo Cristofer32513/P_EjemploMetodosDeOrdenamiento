@@ -401,9 +401,16 @@ class MetodosDeOrdenamiento:
     def mostrarArchivo(self, ar):
         archivo=open(ar, "r")
         linea=archivo.readline()
+        cont=1
         print("  ", end="")
         while(linea!=""):
-            print((linea[0:len(linea)-1]+", "), end="")
+            if(cont==15):
+                print(linea[0:len(linea)-1])
+                print("  ", end="")
+                cont=1
+            else:
+                print((linea[0:len(linea)-1]+", "), end="")
+                cont+=1
             linea=archivo.readline()
         print()
         print()
@@ -438,11 +445,7 @@ class MetodosDeOrdenamiento:
                 arr[k] = aux2[j] 
                 j+=1
                 k+=1
-
-    def mostrar(self, arr): 
-        for i in range(len(arr)):         
-            print(arr[i],end=" ") 
-        print()     
+   
         
         
 metodos=MetodosDeOrdenamiento()
@@ -594,13 +597,22 @@ while(repetirMenuPrincipal):
             print()
             print()
         if(opcion==8):
-            archivo1=open("Archivo1.txt", "r")
+            archivo1=open("ArchivoMN.txt", "r")
             lineaArchivo1=archivo1.readline() 
             arr=lineaArchivo1.split(",")
             archivo1.close
-            metodos.mostrar(arr) 
+            print("  ======================================================ARCHIVO ORIGINAL======================================================\n")
+            metodos.mostrarVector(arr) 
+            print()
+            print()
+            inicio=time()
             metodos.mezclaNatural(arr) 
-            metodos.mostrar(arr) 
+            tiempoTotal=time()-inicio
+            print("  ======================================================ARCHIVO ORDENADO======================================================\n")
+            metodos.mostrarVector(arr) 
+            print()
+            print()
+            metodos.mostrarDatosDeEficiencia(0, 0, 0, tiempoTotal)
             print()
             print()
         if(opcion==9):
