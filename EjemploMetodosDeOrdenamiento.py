@@ -394,8 +394,11 @@ class MetodosDeOrdenamiento:
         #print("Archivos combinados y ordenados correctamente")
         archivo3.close
         tiempoTotal=time()-inicio
-        print("  =================================================ORDENAMIENTO POR INTERCALACION================================================\n")
-        self.mostrarArchivo(ar3)
+        '''NO SE POR QUE NO LO IMPRIME, SI EN
+        EL ARCHIVO SI SE ESCRIBIERON LOS DATOS,
+        SOLO PUEDO IMPRIMIRLO FUERA DEL METODO'''
+        #print("  =================================================ORDENAMIENTO POR INTERCALACION================================================\n")
+        #self.mostrarArchivo(ar3)
         self.mostrarDatosDeEficiencia(contadorComparaciones, contadorIntercambios, contadorRecorridos, tiempoTotal) 
        
     def mostrarArchivo(self, ar):
@@ -594,6 +597,10 @@ while(repetirMenuPrincipal):
             print()
         if(opcion==7):
             metodos.ordenamientoPorIntercalacion()
+            print()
+            print("  =================================================ORDENAMIENTO POR INTERCALACION================================================\n")
+            ar3="ArchivoSalidaI.txt"
+            metodos.mostrarArchivo(ar3)
             print()
             print()
         if(opcion==8):
